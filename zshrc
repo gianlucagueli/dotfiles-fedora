@@ -2,6 +2,7 @@
 # "source path/to/dotfiles-fedora/zshrc"
 
 export ZSH="$HOME/.oh-my-zsh"
+export TRASH_DIR="$HOME/.local/trash"
 
 ZSH_THEME="af-magic"
 HYPHEN_INSENSITIVE="true"
@@ -43,12 +44,24 @@ alias copy="xclip -selection clipboard"
 alias df="df -h"
 alias free="free -h"
 
+# Safe remove
+remove() {
+    mkdir -p "$TRASH_DIR" 
+
+    for file in "$@"; do
+	timestamp=$(date +%Y%m%d%H%M%S)
+        mv "$file" "$trash_dir/$(basename "$file")-$timestamp"
+    done
+}
+
+alias empty-trash="rm -rf $TRASH_DIR/*"
+
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 # EDITOR
 export EDITOR=nvim
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
