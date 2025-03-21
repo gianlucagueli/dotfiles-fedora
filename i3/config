@@ -3,15 +3,14 @@
 # "include path/to/dotfiles-fedora/i3/config"
 #
 # Variables to set:
-# -myTerminal
+# $terminal your-terminal
+# $dotfiles $HOME/path/to/dotfiles-fedora
 
 ################################################################################################
 ##                                      Defaults:                                             ##
 ################################################################################################
 set $mod Mod4
 
-# $HOME/path/to/dotfiles-fedora
-set $dotfiles $HOME/.config/dotfiles-fedora/
 
 font xft:URWGothic-Book 11
 font pango: DejaVu Sans Mono 10, FontAwesome 10
@@ -64,7 +63,7 @@ bindsym $mod+Shift+s sticky toggle
 bindsym $mod+m bar mode toggle
 
 # Launch apps
-bindsym $mod+Return exec $myTerminal
+bindsym $mod+Return exec $terminal
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+t exec --no-startup-id "pkill compton; compton"
 
