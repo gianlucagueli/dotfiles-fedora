@@ -310,6 +310,7 @@ bar {
 ###############################################################################################
 
 exec --no-startup-id $HOME/.screenlayout/default.sh
+exec --no-startup-id $dotfiles/i3/scripts/enableTouchpadTap.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 exec --no-startup-id xfce4-power-manager
